@@ -1,16 +1,16 @@
 package za.co.digitalplatoon.invoiceservice.invoice.application.internal;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import za.co.digitalplatoon.invoiceservice.invoice.application.InvoiceApplication;
+import org.springframework.stereotype.Service;
+import za.co.digitalplatoon.invoiceservice.invoice.application.InvoiceService;
 import za.co.digitalplatoon.invoiceservice.invoice.domain.invoice.Invoice;
 import za.co.digitalplatoon.invoiceservice.invoice.domain.invoice.InvoiceRepository;
 
 import java.util.List;
 import java.util.Optional;
 
-@Component
-public class DefaultInvoiceApplication implements InvoiceApplication {
+@Service
+public class DefaultInvoiceService implements InvoiceService {
 
     @Autowired
     InvoiceRepository repository;

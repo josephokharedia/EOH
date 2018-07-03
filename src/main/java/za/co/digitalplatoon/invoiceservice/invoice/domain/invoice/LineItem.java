@@ -19,10 +19,6 @@ public class LineItem {
     @Positive
     private BigDecimal unitPrice;
 
-    public BigDecimal getLineItemTotal() {
-        throw new UnsupportedOperationException();
-    }
-
     public Long getId() {
         return id;
     }

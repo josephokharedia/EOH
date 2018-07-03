@@ -5,7 +5,7 @@ import za.co.digitalplatoon.invoiceservice.invoice.domain.invoice.Invoice;
 import java.util.List;
 import java.util.Optional;
 
-public interface InvoiceApplication {
+public interface InvoiceService {
 
     void addInvoice(Invoice invoice);
 

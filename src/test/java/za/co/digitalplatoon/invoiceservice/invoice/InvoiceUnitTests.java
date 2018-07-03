@@ -2,21 +2,26 @@ package za.co.digitalplatoon.invoiceservice.invoice;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.junit4.SpringRunner;
 import za.co.digitalplatoon.invoiceservice.invoice.domain.invoice.Invoice;
 import za.co.digitalplatoon.invoiceservice.invoice.domain.invoice.LineItem;
 
 import java.math.BigDecimal;
 
-//@RunWith(SpringRunner.class)
-//@SpringBootTest
-public class InvoiceApplicationTests {
+import static org.assertj.core.api.Assertions.assertThat;
 
-    Invoice invoice;
+@RunWith(SpringRunner.class)
+public class InvoiceUnitTests {
+
+    private Invoice invoice;
 
     @Before
-    public void init() {
+    public void setup() {
         invoice = new Invoice();
+        invoice.setId(1L);
         invoice.setVatRate(15L);
+
         LineItem lineItem1 = new LineItem();
         lineItem1.setId(1L);
         lineItem1.setQuantity(1L);
@@ -31,22 +36,13 @@ public class InvoiceApplicationTests {
 
         invoice.getLineItems().add(lineItem1);
         invoice.getLineItems().add(lineItem2);
-
     }
 
-//    @Test
-//    public void contextLoads() {
-//    }
-
     @Test
-    public void testTotalOfInvoice() {
-        System.out.println("subTotal: " + invoice.getSubTotal());
-        System.out.println("vat: " + invoice.getVat());
-        System.out.println("total: " + invoice.getTotal());
-
-//        assertThat(invoice.getSubTotal(), is(0));
-//        assertThat(invoice.getTotal(), is(0));
-//        assertThat(invoice.getVat(), is(0));
+    public void givenInvoice_testThatSubTotalAndTotalAndVatIsCorrect() {
+        assertThat(invoice.getVat().toPlainString()).isEqualTo("0.60");
+        assertThat(invoice.getSubTotal().toPlainString()).isEqualTo("4.00");
+        assertThat(invoice.getTotal().toPlainString()).isEqualTo("4.60");
     }
 
 }
